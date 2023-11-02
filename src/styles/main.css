@@ -4,6 +4,8 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #fc1e8a;
+    /* propriedade usada para o usuário não conseguir selecionar nenhum emoji */
+    user-select: none;
 }
 
 .container {
@@ -72,4 +74,30 @@ h2 {
     align-items: center;
     justify-content: center;
     background-color: #fff;
+
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: 0.5s;   
+}
+
+/* o que vai acontecer com a class item quando tudo for carregado */
+.item::after{
+    content: "";
+    position: absolute;
+    /* inset usado para "cobrir" o card com outra cor */
+    inset: 0;
+    opacity: 0.85;
+    background: #404040;
+    transition: 0.5s;
+    transform: rotateY(0deg);
+    /* backface para garantir que o card com o emoji não seja visível */
+    backface-visibility: hidden;
+}
+
+.item .boxOpen {
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after {
+    transform: rotateY(180deg);
 }
