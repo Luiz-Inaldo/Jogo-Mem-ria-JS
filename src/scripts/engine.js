@@ -51,5 +51,21 @@ function handleClick(){
 }
 
 function checkMatch(){
-    
+
+    // condições para verificar se os dois card são iguais ou não
+    if (openCards[0].innerHTML === openCards[1].innerHTML){
+        openCards[0].classList.add('boxMatch');
+        openCards[1].classList.add('boxMatch');
+    } else {
+        openCards[0].classList.remove('boxOpen');
+        openCards[1].classList.remove('boxOpen');
+    }
+
+    // resetando a openCards
+    openCards = [];
+
+    // condição de vitória
+    if (document.querySelectorAll('.boxMatch').length === emojis.length){
+        alert('Você venceu !');
+    }
 }
