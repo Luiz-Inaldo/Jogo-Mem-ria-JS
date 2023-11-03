@@ -18,6 +18,10 @@ const emojis = [
 ];
 let openCards = [];
 
+let chances = document.querySelector('.chances');
+let chancesRemaining = 5;
+chances.textContent = chancesRemaining;
+
 //  variável que vai embaralhar os emojis
 let shuffleEmojis = emojis.sort(() => (Math.random() > 0.5 ? 2 : -1));
 
@@ -59,6 +63,8 @@ function checkMatch(){
     } else {
         openCards[0].classList.remove('boxOpen');
         openCards[1].classList.remove('boxOpen');
+        chancesRemaining--
+        chances.textContent = chancesRemaining;
     }
 
     // resetando a openCards
@@ -67,5 +73,10 @@ function checkMatch(){
     // condição de vitória
     if (document.querySelectorAll('.boxMatch').length === emojis.length){
         alert('Você venceu !');
+        window.location.reload();
+    } else if (chancesRemaining === 0) {
+        alert('Você perdeu ! Mais sorte na próxima !');
+        window.location.reload(); 
     }
+
 }
